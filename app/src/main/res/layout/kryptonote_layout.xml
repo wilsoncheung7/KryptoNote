@@ -45,12 +45,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ENCRYPT" />
-
             <Button
-                android:id="@+id/decrypt"
+                android:id="@+id/save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DECRYPT" />
+                android:text="SAVE" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -59,16 +59,17 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/save"
+                android:id="@+id/decrypt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="SAVE" />
+                android:text="DECRYPT" />
 
             <Button
                 android:id="@+id/load"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="LOAD" />
+
         </LinearLayout>
 
 
@@ -79,8 +80,8 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/result"
+        <EditText
+            android:id="@+id/data"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
