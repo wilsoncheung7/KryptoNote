@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,15 +21,43 @@ public class KryptoNoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.kryptonote_layout);
+        Button encrypt=findViewById(R.id.encrypt);
+        Button decrypt=findViewById(R.id.decrypt);
+        Button save=findViewById(R.id.save);
+        Button load=findViewById(R.id.load);
+        encrypt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onEncrypt(view);
+            }
+        });
+        decrypt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onDecrypt(view);
+            }
+        });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onSave(view);
+            }
+        });
+        load.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onLoad(view);
+            }
+        });
     }
 
     public void onEncrypt(View v){
 
         try{
             EditText keyView=findViewById(R.id.key);
-//            String key=keyView.getText().toString();
-//            Cipher cipher=new Cipher(key);
-//            ((TextView)findViewById(R.id.data)).setText(cipher.Encrypt(key));
+            String key=keyView.getText().toString();
+            Cipher cipher=new Cipher(key);
+            ((TextView)findViewById(R.id.data)).setText(cipher.Encrypt(key));
         }
 
         catch (Exception e){
@@ -38,11 +67,14 @@ public class KryptoNoteActivity extends AppCompatActivity {
 
     public void onDecrypt (View v){
         try{
-
+            EditText keyView=findViewById(R.id.key);
+            String key=keyView.getText().toString();
+            Cipher cipher=new Cipher(key);
+            ((TextView)findViewById(R.id.data)).setText(cipher.Decrypt(key));
         }
 
         catch (Exception e){
-
+            System.out.println("Error");
         }
     }
 
