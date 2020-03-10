@@ -3,7 +3,7 @@ package eecs1022.kryptonote;
 public class Cipher {
 
     private String key;
-    public static final String ALPHABET="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    public static final String ALPHABET=" ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
     public Cipher(String k){
         this.key=k;
@@ -29,10 +29,10 @@ public class Cipher {
             String c=note.substring(i,i+1);
             int position=ALPHABET.indexOf(c);
             int shift=Integer.parseInt(pad.substring(i,i+1));
-            int newPosition=position-shift;
-            if (newPosition<ALPHABET.length())
-                newPosition=newPosition+ALPHABET.length();
-            result=result+ALPHABET.substring(newPosition,newPosition+1);
+            int newPosition=(ALPHABET.length()+position-shift)%ALPHABET.length();
+            if (newPosition<0)
+                newPosition+=ALPHABET.length();
+            result+=ALPHABET.substring(newPosition,newPosition+1);
         }
         return result;
     }

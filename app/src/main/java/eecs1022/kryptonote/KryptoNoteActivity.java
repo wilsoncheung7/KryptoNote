@@ -56,12 +56,16 @@ public class KryptoNoteActivity extends AppCompatActivity {
         try{
             EditText keyView=findViewById(R.id.key);
             String key=keyView.getText().toString();
+            EditText noteView=findViewById(R.id.data);
+            String note=noteView.getText().toString();
             Cipher cipher=new Cipher(key);
-            ((TextView)findViewById(R.id.data)).setText(cipher.encrypt(key));
+            String result=cipher.encrypt(note);
+            ((TextView)findViewById(R.id.data)).setText(result);
+
         }
 
         catch (Exception e){
-            System.out.println(e);
+            Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
         }
     }
 
@@ -69,12 +73,15 @@ public class KryptoNoteActivity extends AppCompatActivity {
         try{
             EditText keyView=findViewById(R.id.key);
             String key=keyView.getText().toString();
+            EditText noteView=findViewById(R.id.data);
+            String note=noteView.getText().toString();
             Cipher cipher=new Cipher(key);
-            ((TextView)findViewById(R.id.data)).setText(cipher.decrypt(key));
+            String result=cipher.decrypt(note);
+            ((TextView)findViewById(R.id.data)).setText(result);
         }
 
         catch (Exception e){
-            System.out.println(e);
+            Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
         }
     }
 
@@ -86,7 +93,7 @@ public class KryptoNoteActivity extends AppCompatActivity {
             FileWriter fw=new FileWriter(file);
             fw.write(((EditText)findViewById(R.id.data)).getText().toString());
             fw.close();
-            Toast.makeText(this,"Note Saved",Toast.LENGTH_LONG);
+            Toast.makeText(this,"Note Saved",Toast.LENGTH_LONG).show();
         }
 
         catch (Exception e){
@@ -108,7 +115,7 @@ public class KryptoNoteActivity extends AppCompatActivity {
         }
 
         catch (Exception e){
-
+            Toast.makeText(this,e.getMessage(),Toast.LENGTH_LONG).show();
         }
     }
 
