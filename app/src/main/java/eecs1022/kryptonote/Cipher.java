@@ -9,20 +9,20 @@ public class Cipher {
         this.key=k;
     }
 
-    public String Encrypt(String note){
+    public String encrypt(String note){
         String pad=makePad(note);
         String result="";
         for(int i=0;i<note.length();i++){
-           String c=note.substring(i,i+1);
+            String c=note.substring(i,i+1);
             int position=ALPHABET.indexOf(c);
             int shift=Integer.parseInt(pad.substring(i,i+1));
             int newPosition=(position+shift)%ALPHABET.length();
-            result=result.substring(newPosition,newPosition+1);
+            result=result+ALPHABET.substring(newPosition,newPosition+1);
         }
         return result;
     }
 
-    public String Decrypt(String note){
+    public String decrypt(String note){
         String pad=makePad(note);
         String result="";
         for(int i=0;i<note.length();i++){
@@ -32,7 +32,7 @@ public class Cipher {
             int newPosition=position-shift;
             if (newPosition<ALPHABET.length())
                 newPosition=newPosition+ALPHABET.length();
-            result=result.substring(newPosition,newPosition+1);
+            result=result+ALPHABET.substring(newPosition,newPosition+1);
         }
         return result;
     }

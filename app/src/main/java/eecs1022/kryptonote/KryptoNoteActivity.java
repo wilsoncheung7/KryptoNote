@@ -57,11 +57,11 @@ public class KryptoNoteActivity extends AppCompatActivity {
             EditText keyView=findViewById(R.id.key);
             String key=keyView.getText().toString();
             Cipher cipher=new Cipher(key);
-            ((TextView)findViewById(R.id.data)).setText(cipher.Encrypt(key));
+            ((TextView)findViewById(R.id.data)).setText(cipher.encrypt(key));
         }
 
         catch (Exception e){
-            System.out.println("Error");
+            System.out.println(e);
         }
     }
 
@@ -70,11 +70,11 @@ public class KryptoNoteActivity extends AppCompatActivity {
             EditText keyView=findViewById(R.id.key);
             String key=keyView.getText().toString();
             Cipher cipher=new Cipher(key);
-            ((TextView)findViewById(R.id.data)).setText(cipher.Decrypt(key));
+            ((TextView)findViewById(R.id.data)).setText(cipher.decrypt(key));
         }
 
         catch (Exception e){
-            System.out.println("Error");
+            System.out.println(e);
         }
     }
 
